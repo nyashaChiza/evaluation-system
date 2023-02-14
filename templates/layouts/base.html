@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="js">
+
+<head>
+    <base href="../">
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="A powerful and conceptual apps base dashboard template that especially build for developers and programmers.">
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <!-- Page Title  -->
+    <title>Evaluation System</title>
+    <!-- StyleSheets  -->
+    {% include 'layouts/styling.html '%}
+</head>
+
+<body class="nk-body bg-lighter ">
+    <div class="nk-app-root">
+        <!-- wrap @s -->
+        <div class="nk-wrap ">
+            <!-- main header @s -->
+            <div class="nk-header is-light">
+                <div class="container-fluid">
+                    {% include 'layouts/header.html' %}
+                </div><!-- .container-fliud -->
+            </div>
+            <!-- main header @e -->
+            <div class="nk-block-head nk-block-head-sm">
+                <div class="nk-block-between">
+                    <div class="nk-block-head-content">
+                        <h3 class="nk-block-title page-title">{% block title %}Evaluation Platform{% endblock %}</h3>
+                        <div class="nk-block-des text-soft">
+                            <p>{% block description %} test description{% endblock %}</p>
+                        </div>
+                    </div><!-- .nk-block-head-content -->
+                    <div class="nk-block-head-content">
+                        <div class="toggle-wrap nk-block-tools-toggle">
+                            <a href="#" class="btn btn-icon btn-trigger toggle-expand me-n1" data-target="pageMenu"><em class="icon ni ni-more-v"></em></a>
+                            <div class="toggle-expand-content" data-content="pageMenu">
+                                <ul class="nk-block-tools g-3">
+                                    <li><a href="#" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-download-cloud"></em><span>Export</span></a></li>
+                                    <li><a href="#" class="btn btn-white btn-dim btn-outline-primary"><em class="icon ni ni-reports"></em><span>Reports</span></a></li>
+                                    <li class="nk-block-tools-opt">
+                                        <div class="drodown">
+                                            <a href="#" class="dropdown-toggle btn btn-icon btn-primary" data-bs-toggle="dropdown"><em class="icon ni ni-plus"></em></a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <ul class="link-list-opt no-bdr">
+                                                    <li><a href="#"><em class="icon ni ni-user-add-fill"></em><span>Add User</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-coin-alt-fill"></em><span>Add Order</span></a></li>
+                                                    <li><a href="#"><em class="icon ni ni-note-add-fill-c"></em><span>Add Page</span></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div><!-- .toggle-expand-content -->
+                        </div><!-- .toggle-wrap -->
+                    </div><!-- .nk-block-head-content -->
+                </div><!-- .nk-block-between -->
+            </div>
+            <!-- content @s -->
+            {% block body %}
+            <!-- content @e -->
+            <!-- footer @s -->
+            {% include 'layouts/footer.html' %}
+            <!-- footer @e -->
+        </div>
+        <!-- wrap @e -->
+    </div>
+    <!-- app-root @e -->
+    <!-- select region modal -->
+    {% include 'layouts/modals.html' %}<!-- .modal -->
+    <!-- JavaScript -->
+    {% include 'layouts/scripts.html'%}
+</body>
+
+</html>
