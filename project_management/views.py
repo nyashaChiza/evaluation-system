@@ -1,18 +1,28 @@
 from django.views.generic import ListView, UpdateView, DetailView, DeleteView, CreateView
 from project_management.models import Project
 from project_management.forms.createForm import ProjectForm
-
+from django.shortcuts import reverse
+from django.contrib.messages.views import SuccessMessageMixin
 
 class ProjectListView(ListView):
     model = Project
+    context_object_name = 'projects'
     template_name = 'projects/index.html'
     
-
-class ProjectCreateView(CreateView):
-    model = Project
-    formclass = ProjectForm
-    template_name = 'projects/create.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['number_projects'] = context['projects'].count()
+        context['number_of_categories'] = context['projects'].count()
+        context['number_of_questions'] = context['projects'].count()   
+        return context
     
+
+class ProjectCreateView(SuccessMessageMixin, CreateView):
+    model = Project
+    form_class = ProjectForm
+    template_name = 'projects/create.html'
+    success_message = 'Project Created Successfully'
+
     
 class ProjectUpdateView(UpdateView):
     model = Project
@@ -21,7 +31,7 @@ class ProjectUpdateView(UpdateView):
         
 class ProjectDetailView(DetailView):
     model = Project
-    template_name = 'projects/update.html'
+    template_name = 'projects/details.html'
     
 
 class ProjectDeleteView(DeleteView):
