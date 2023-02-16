@@ -32,8 +32,25 @@ class ProjectUpdateView(UpdateView):
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'projects/details.html'
+
+
+class ProjectCategoriesView(DetailView):
+    model = Project
+    template_name = 'projects/details/categories.html'
     
 
+class ProjectAnswersView(DetailView):
+    model = Project
+    template_name = 'projects/details/answers.html'
+
+class ProjectInsightsView(DetailView):
+    model = Project
+    template_name = 'projects/details/insights.html'
+    
+    
+class ProjectQuestionsView(DetailView):
+    model = Project
+    template_name = 'projects/details/questions.html'
 class ProjectDeleteView(DeleteView):
     model = Project
     template_name = 'projects/update.html'
