@@ -15,5 +15,5 @@ urlpatterns = [
     path("details/questions/<int:pk>/",ProjectQuestionsView.as_view(),name="project-questions"),
     path("details/answers/<int:pk>/",ProjectAnswersView.as_view(),name="project-answers"),
     path("details/insights/<int:pk>/",ProjectInsightsView.as_view(),name="project-insights"),
-    path("update/<int:pk>/", ProjectUpdateView.as_view(), name="update-project"),
+    path("update/<int:pk>/", ProjectUpdateView.as_view(), name="project-update"),
 ]

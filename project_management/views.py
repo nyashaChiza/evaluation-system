@@ -24,9 +24,11 @@ class ProjectCreateView(SuccessMessageMixin, CreateView):
     success_message = 'Project Created Successfully'
 
     
-class ProjectUpdateView(UpdateView):
+class ProjectUpdateView(SuccessMessageMixin, UpdateView):
     model = Project
+    form_class = ProjectForm
     template_name = 'projects/update.html'
+    success_message = 'Project Updated Successfully'
         
         
 class ProjectDetailView(DetailView):
@@ -51,6 +53,11 @@ class ProjectInsightsView(DetailView):
 class ProjectQuestionsView(DetailView):
     model = Project
     template_name = 'projects/details/questions.html'
-class ProjectDeleteView(DeleteView):
+    
+class ProjectDeleteView(SuccessMessageMixin,DeleteView):
     model = Project
     template_name = 'projects/update.html'
+    success_message = 'Project Deleted Successfully'
+    
+    def get_success_url(self) -> str:
+        return reverse('list-projects')

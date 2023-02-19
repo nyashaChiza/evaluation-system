@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+ {% load crispy_forms_tags %}
+ {% block body %}
+ {% block title %}Update {{ project }} Project{% endblock %}
+<div class="col-xl-12 col-xxl-8 mx-auto">
+  <div class="card card-bordered card-full">
+    <div class="card-inner border-bottom">
+      <form method="post" novalidate>
+        {% csrf_token %} {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Update project</button>
+      </form>
+    </div>
+  </div>
+</div>
+  {% endblock %}
+</div>

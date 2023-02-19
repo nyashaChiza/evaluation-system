@@ -41,14 +41,35 @@
                                         <div class="dropdown-menu">
                                           <ul class="link-list-opt">
                                             <li><a href="{% url 'project-detail' project.id %}"><span><em class="icon ni ni-eye"></em><span> View</span></a></li>
-                                            <li><a href="{% url 'project-detail' project.id %}"><span><em class="icon ni ni-update"></em><span> Update</span></a></li>
-                                            <li><a href="{% url 'project-detail' project.id %}"><em class="icon ni ni-trash"></em> <span> Delete</span></a></li>
-                                          </ul>
+                                            <li><a href="{% url 'project-update' project.id %}"><span><em class="icon ni ni-update"></em><span> Update</span></a></li>
+                                            <li class="preview-item"> <span  class="text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{project.id}}"><span>&nbsp;&nbsp;&nbsp;<em class="icon ni ni-trash-alt"></em> Delete</span></span></li>    
+                                        </ul>
                                         </div>
                                       </div>
                                     
                                 </td>
                             </tr>
+                            <div class="modal fade" tabindex="-1" id="modalAlert{{project.id}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body modal-body-lg text-center">
+                                            <div class="nk-modal">
+                                                <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                                                <h4 class="nk-modal-title">Delete {{ project }} Project</h4>
+                                                <div class="nk-modal-text">
+                                                    <p class="lead">Are You Sure You Want To Delete This Project?</p>
+                                                    </div>
+                                                <div class="nk-modal-action mt-5">
+                                                    <form method="POST" action='{% url  'delete-project' project.id %}'>
+                                                        {% csrf_token %}
+                                                    <button type='submit' class="btn btn-lg btn-mw btn-danger" >Delete</button>
+                                                    <a href="#" class="btn btn-lg btn-mw btn-light" data-bs-dismiss="modal">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div><!-- .modal-body -->
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         </tbody>
                     </table>
