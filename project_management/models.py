@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.shortcuts import reverse
+# from category_management.models import Category
 
 STATUS_OPTIONS = settings.STATUS_OPTIONS
 
@@ -17,4 +18,8 @@ class Project(models.Model):
     
     def get_absolute_url(self):    
         return reverse('list-projects')
+    
+    # def get_categories(self):
+    #     return Category.objects.filter(project=self.id).all()
+        
     

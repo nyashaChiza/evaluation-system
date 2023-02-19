@@ -2,6 +2,7 @@ from django.views.generic import ListView, UpdateView, DetailView, DeleteView, C
 from project_management.models import Project
 from project_management.forms.createForm import ProjectForm
 from django.shortcuts import reverse
+from category_management.models import Category
 from django.contrib.messages.views import SuccessMessageMixin
 
 class ProjectListView(ListView):
@@ -12,7 +13,7 @@ class ProjectListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['number_projects'] = context['projects'].count()
-        context['number_of_categories'] = context['projects'].count()
+        # context['number_of_categories'] = Category.objects.filter(projects=context['project']).count()
         context['number_of_questions'] = context['projects'].count()   
         return context
     

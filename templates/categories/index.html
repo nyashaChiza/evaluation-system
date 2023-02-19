@@ -7,9 +7,9 @@
         <div class="card-inner border-bottom">
             <div class="card-title-group">
                 <div class="card-title">
-                    <h6 class="title">Projects</h6>
+                    <h3 class="title">Categories</h3>
                 </div>
-                <a href="{% url 'create-project' %}" class="btn btn-primary">Create New Project</a>
+                <a href="{% url 'create-category' %}" class="btn btn-primary">Create New Category</a>
             </div>
         </div>
         <div class="nk-block nk-block-lg">
@@ -21,34 +21,55 @@
                             <tr>
                                 <th>Name</th>
                                 <th>Status</th>
-                                <th>Categories</th>
+                                <th>Project</th>
                                 <th>Questions</th>
                                 <th>Date Created</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                        {% for project in projects %}
+                        {% for category in categories %}
                             <tr>
-                           <td>{{ project.name }}</td>
-                                <td>{{ project.status }}</td>
-                                <td>{{ number_of_categories }} Categories</td>
+                           <td>{{ category.name }}</td>
+                                <td>{{ category.status }}</td>
+                                <td>{{ category.project }} </td>
                                 <td>{{ number_of_questions }} Questions</td>
-                                <td>{{ project.created|date:"d/m/Y - g:ia" }}</td>
+                                <td>{{ category.created|date:"d/m/Y - g:ia" }}</td>
                                 <td>
                                     <div class="dropdown">
                                         <span class=" dropdown-toggle"  type="button" data-bs-toggle="dropdown"><em class="icon ni ni-more-h"></em></span>
                                         <div class="dropdown-menu">
                                           <ul class="link-list-opt">
-                                            <li><a href="{% url 'project-detail' project.id %}"><span><em class="icon ni ni-eye"></em><span> View</span></a></li>
-                                            <li><a href="{% url 'project-detail' project.id %}"><span><em class="icon ni ni-update"></em><span> Update</span></a></li>
-                                            <li><a href="{% url 'project-detail' project.id %}"><em class="icon ni ni-trash"></em> <span> Delete</span></a></li>
-                                          </ul>
+                                            <li><a href="{% url 'category-detail' category.id %}"><span><em class="icon ni ni-eye"></em><span> View</span></a></li>
+                                            <li><a href="{% url 'update-category' category.id %}"><span><em class="icon ni ni-update"></em><span> Update</span></a></li>
+                                            <li class="preview-item"> <span  class="text-danger" data-bs-toggle="modal" data-bs-target="#modalAlert{{category.id}}"><span>&nbsp;&nbsp;&nbsp;<em class="icon ni ni-trash-alt"></em> Delete</span></span></li> 
+                                           </ul>
                                         </div>
                                       </div>
                                     
                                 </td>
                             </tr>
+                            <div class="modal fade" tabindex="-1" id="modalAlert{{category.id}}">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-body modal-body-lg text-center">
+                                            <div class="nk-modal">
+                                                <em class="nk-modal-icon icon icon-circle icon-circle-xxl ni ni-cross bg-danger"></em>
+                                                <h4 class="nk-modal-title">Delete {{ category }} Category</h4>
+                                                <div class="nk-modal-text">
+                                                    <p class="lead">Are You Sure You Want To Delete This Category?</p>
+                                                    </div>
+                                                <div class="nk-modal-action mt-5">
+                                                    <form method="POST" action='{% url  'delete-category' category.id %}'>
+                                                        {% csrf_token %}
+                                                    <button type='submit' class="btn btn-lg btn-mw btn-danger" >Delete</button>
+                                                    <a href="#" class="btn btn-lg btn-mw btn-light" data-bs-dismiss="modal">Cancel</a>
+                                                </div>
+                                            </div>
+                                        </div><!-- .modal-body -->
+                                    </div>
+                                </div>
+                            </div>
                             {% endfor %}
                         </tbody>
                     </table>

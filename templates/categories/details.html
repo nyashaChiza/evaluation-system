@@ -1,0 +1,95 @@
+{% extends "layouts/base.html" %}
+{% block body %}
+<div class="nk-content ">
+    <div class="container-fluid">
+        <div class="nk-content-inner">
+            <div class="nk-content-body">
+                <div class="nk-block">
+                    <div class="card card-bordered">
+                        <div class="card-aside-wrap">
+                            <div class="card-inner card-inner-lg">
+                                <div class="nk-block-head nk-block-head-lg">
+                                    <div class="nk-block-between">
+                                        <div class="nk-block-head-content">
+                                            <h4 class="nk-block-title">{{ category.name }} Category Information</h4>
+                                            <div class="nk-block-des">
+                                                <p>{{ category.description }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="nk-block-head-content align-self-start d-lg-none">
+                                            <a href="#" class="toggle btn btn-icon btn-trigger mt-n1" data-target="userAside"><em class="icon ni ni-menu-alt-r"></em></a>
+                                        </div>
+                                    </div>
+                                </div><!-- .nk-block-head -->
+                                <div class="nk-block">
+                                    <div class="nk-data data-list">
+                                        <div class="data-head">
+                                            <h6 class="overline-title"> {{ category.name}} Information</h6>
+                                        </div>
+                                        <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                            <div class="data-col">
+                                                <span class="data-label">Name</span>
+                                                <span class="data-value">{{ category.name }}</span>
+                                            </div>
+                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                        </div>
+                                        <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                            <div class="data-col">
+                                                <span class="data-label">Project</span>
+                                                <span class="data-value">{{ category.project }}</span>
+                                            </div>
+                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                        </div><!-- data-item -->
+                                        <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                            <div class="data-col">
+                                                <span class="data-label">Status</span>
+                                                <span class="data-value">{{ category.status }}</span>
+                                            </div>
+                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                        </div><!-- data-item -->
+                                        <!-- data-item -->
+                                        <div class="data-item" data-bs-toggle="modal" data-bs-target="#profile-edit">
+                                            <div class="data-col">
+                                                <span class="data-label">Created</span>
+                                                <span class="data-value">{{ category.created }}</span>
+                                            </div>
+                                            <div class="data-col data-col-end"><span class="data-more"><em class="icon ni ni-forward-ios"></em></span></div>
+                                        </div><!-- data-item -->
+                                        <!-- data-item -->
+                                    </div><!-- data-list -->
+                                    <!-- data-list -->
+                                </div><!-- .nk-block -->
+                            </div>
+                            <div class="card-aside card-aside-left user-aside toggle-slide toggle-slide-left toggle-break-lg" data-toggle-body="true" data-content="userAside" data-toggle-screen="lg" data-toggle-overlay="true">
+                                <div class="card-inner-group" data-simplebar>
+                                    <div class="card-inner">
+                                        <div class="user-card">
+                                            <div class="user-avatar bg-primary">
+                                                <span>AB</span>
+                                            </div>
+                                            <div class="user-info">
+                                                <span class="lead-text">{{ category.name }}</span>
+                                               
+                                            </div>
+                                            
+                                        </div><!-- .user-card -->
+                                    </div><!-- .card-inner -->
+                                    <!-- .card-inner -->
+                                    <div class="card-inner p-0">
+                                        <ul class="link-list-menu">
+                                            <li><a class="active" href="{% url 'category-detail' category.id %}"><em class="icon ni ni-user-fill-c"></em><span>category Infomation</span></a></li>
+                                            <li><a href="{% url 'category-detail' category.id %}"><em class="icon ni ni-activity-round-fill"></em><span>category Questions</span></a></li>
+                                        </ul>
+                                    </div><!-- .card-inner -->
+                                </div><!-- .card-inner-group -->
+                            </div><!-- card-aside -->
+                        </div><!-- .card-aside-wrap -->
+                    </div><!-- .card -->
+                </div><!-- .nk-block -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- content @e -->
+
+{% endblock %}

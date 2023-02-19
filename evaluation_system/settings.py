@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     #apps
     "project_management.apps.ProjectManagementConfig",
+    "category_management.apps.CategoryManagementConfig",
     #3rds Party Apps
     "crispy_forms",
     
